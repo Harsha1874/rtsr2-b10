@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+        }
+        .product-card p {
+            margin: 5px 0;
+        }
+        .product-card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .product-card button:hover {
+            background-color: #45a049;
+        }
+        /* Additional styles for the minimize button */
+        #minimizePaymentBtn {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Details</h1>
+        <ul class="navBar">
+            <li class="navItems"><a class="navItems" href="home.html">Home</a></li>
+            <li class="navItems"><a class="navItems" href="products.html">Products</a></li>
+            <li class="navItems"><a class="navItems" href="cart.html">Cart</a></li>
+        </ul>
+    </header>
+    <div class="main">
+        <div class="bg-color">
+            <section id="sec1">
+                <h2>Product List</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.Ffz-zhtom0WbA01qZSoazQHaE8&pid=Api&P=0&h=220" alt="Product Image">
+                        <h3>Product 1</h3>
+                        <p>Description: Lorem ipsum dolor sit amet.</p>
+                        <p>Price: Rs1000.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.nT8R3kGmbvC1yEv4wpOxcAHaHa&pid=Api&P=0&h=220" alt="Product Image">
+                        <h3>Product 2</h3>
+                        <p>Description: Consectetur adipiscing elit.</p>
+                        <p>Price: Rs2000.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://www.nfcw.com/wp-content/uploads/2021/12/walkout-scan-free-self-checkout-smart-cart.jpg" alt="Product Image">
+                        <h3>Product 3</h3>
+                        <p>Description: Nullam auctor eros.</p>
+                        <p>Price: Rs3000.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://tse2.mm.bing.net/th?id=OIP.i3ID1d6H3tn87tfVN0n36gHaEK&pid=Api&P=0&h=220" alt="Product Image">
+                        <h3>Product 4</h3>
+                        <p>Description: Eget tincidunt ultricies.</p>
+                        <p>Price: Rs4000.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            <section id="paymentSection">
+                <h2>Proceed to Payment</h2>
+                <button id="minimizePaymentBtn">Minimize Payment</button>
+                <img src="C:\Users\lilha\Desktop\RTSR_b10\payment.jpg" alt="" id="scanner">
+            </section>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Smart Shopping Trolley. All rights reserved.</p>
+        <p><a href="home.html">Go back to Home</a></p>
+    </footer>
+
+    <script>
+        function togglePaymentSection() {
+            var paymentSection = document.getElementById("paymentSection");
+            var paymentForm = document.getElementById("paymentForm");
+            var minimizePaymentBtn = document.getElementById("minimizePaymentBtn");
+
+            if (paymentForm.style.display === "none") {
+                paymentForm.style.display = "block";
+                minimizePaymentBtn.innerText = "Minimize Payment";
+            } else {
+                paymentForm.style.display = "none";
+                minimizePaymentBtn.innerText = "Show Payment";
+            }
+        }
+
+        function processPayment(event) {
+            event.preventDefault();
+            console.log("Payment processing...");
+            // Your payment processing logic here
+        }
+        document.getElementById("minimizePaymentBtn").addEventListener("click",()=>{
+            let boolValue = localStorage.getItem("bool");
+            if (boolValue == "false"){
+                document.getElementById("scanner").style.display="flex";
+                localStorage.setItem("bool","true");
+                console.log("Changed to True");
+            }
+            else{
+                document.getElementById("scanner").style.display="none";
+                localStorage.setItem("bool","false");
+                console.log("Changed to false");
+            }
+        })  
+
+    </script>
+    <!-- <script src="C:\Users\lilha\Desktop\RTSR_b10\smart-shopping-trolley-rtsr1\shopping\header\product.html"></script> -->
+</body>
+</html>

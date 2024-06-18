@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .item {
+            margin-bottom: 10px;
+        }
+        #cart {
+            margin-top: 20px;
+        }
+        #paymentForm {
+            display: none;
+        }
+        .minimize-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Shopping Cart</h2>
+        <div class="item">
+            <span>Apple - Rs 25</span>
+            <button onclick="addItem('Apple', 25)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <span>Banana - Rs 20</span>
+            <button onclick="addItem('Banana', 20)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <span>Orange - Rs 30</span>
+            <button onclick="addItem('Orange', 30)">Add to Cart</button>
+        </div>
+        <h3>Your Cart</h3>
+        <div id="cart"></div>
+        <button onclick="calculateTotal()">Calculate Total</button>
+        <p id="total"></p>
+        <br>
+        <button id="showScanner">Proceed to Payment</button>
+        <img src="C:\Users\lilha\Desktop\RTSR_b10\payment.jpg" alt="" id="scanner">
+        <p id="paymentStatus"></p>
+        <br>
+        <button onclick="goToHomePage()">Go back to Home</button>
+        <button class="minimize-btn" onclick="minimizePaymentForm()">Minimize Payment Form</button>
+    </div>
+
+    <script>
+        let cart = {};
+        document.getElementById("scanner").style.display="none";
+        function addItem(itemName, price) {
+            if (cart[itemName]) {
+                cart[itemName].quantity++;
+            } else {
+                cart[itemName] = { price: price, quantity: 1 };
+            }
+            updateCart();
+        }
+
+        document.getElementById("showScanner").addEventListener("click",()=>{
+            let boolValue = localStorage.getItem("bool");
+            if (boolValue == "false"){
+                document.getElementById("scanner").style.display="flex";
+                localStorage.setItem("bool","true");
+                console.log("Changed to True");
+            }
+            else{
+                document.getElementById("scanner").style.display="none";
+                localStorage.setItem("bool","false");
+                console.log("Changed to false");
+            }
+        })
+
+        function removeItem(itemName) {
+            if (cart[itemName]) {
+                cart[itemName].quantity--;
+                if (cart[itemName].quantity === 0) {
+                    delete cart[itemName];
+                }
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '';
+            for (const item in cart) {
+                const itemDetails = cart[item];
+                cartDiv.innerHTML += `<p>${item}: Rs${itemDetails.price} x ${itemDetails.quantity} <button onclick="removeItem('${item}')">Remove</button></p>`;
+            }
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            for (const item in cart) {
+                const itemDetails = cart[item];
+                total += itemDetails.price * itemDetails.quantity;
+            }
+            document.getElementById('total').innerText = `Total: Rs${total.toFixed(2)}`;
+        }
+
+        function startPayment() {
+            document.getElementById('paymentForm').style.display = 'block';
+        }
+
+        function processCardPayment() {
+            // Process card payment using your payment gateway
+            document.getElementById('paymentStatus').innerText = "Card payment processing...";
+        }
+
+        function minimizePaymentForm() {
+            document.getElementById('paymentForm').style.display = 'none';
+        }
+
+        function goToHomePage() {
+            window.location.href = "home.html"; // Replace "home.html" with the actual URL of your home page
+        }
+    </script>
+</body>
+</html>

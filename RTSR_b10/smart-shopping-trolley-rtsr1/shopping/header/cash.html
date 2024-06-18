@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Payment</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Payment Details</h2>
+            <form id="payment-form">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
+                <label for="expiration-date">Expiration Date:</label>
+                <input type="text" id="expiration-date" name="expiration-date" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+                <button type="submit">Pay Now</button>
+            </form>
+        </section>
+        <section>
+            <h2>Alternative Payment Methods</h2>
+            <button id="google-pay-button">Pay with Google Pay</button>
+            <button id="phonepe-button">Pay with PhonePe</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Smart Shopping Trolley. All rights reserved.</p>
+        <p><a href="home.html">Go back to Home</a></p> <!-- Link to home.html -->
+    </footer>
+    <script src="script.js"></script> <!-- Include your JavaScript file -->
+</body>
+</html>

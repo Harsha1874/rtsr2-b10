@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Shopping Trolley - Features & Product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Shopping Trolley</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Automatic Product Scanning</li>
+                <li>Real-time Inventory Tracking</li>
+                <li>Personalized Recommendations</li>
+                <!-- Add more features as needed -->
+            </ul>
+        </section>
+        <section id="product-details">
+            <h2>Product Name</h2>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor eros eget tincidunt ultricies.</p>
+            <p>Price: Rs20000.00</p>
+            <button id="add-to-cart-btn">Add to Cart</button>
+            <!-- Additional product information can be added here -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Smart Shopping Trolley. All rights reserved.</p>
+        <p><a href="home.html">Back to Home</a></p> <!-- Link to home.html -->
+    </footer>
+    
+    <script>
+        // Get a reference to the button
+        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        
+        // Add event listener for click event
+        addToCartBtn.addEventListener('click', function() {
+            // Perform action here
+            alert('Product added to cart!');
+        });
+    </script>
+</body>
+</html>
